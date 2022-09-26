@@ -25,3 +25,17 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+--------------------------------------------------
+# Sobre o Projeto Supply Chain
+
+Hoje no setor compras o gestor executivo tem bastante dificuldade em ver os produtos de cada fornecedor e correlacionar
+um preço mais acessível para efetuar as compras em que a empresa precisa
+hoje ele utilizar uma série de arquivos Excel de fornecedores com seus respectivos produtos
+por conta disso ele passa quase o dia todo do seu trabalho para saber qual produto entre os fornecedores é mais acessível
+por conta disso desenvolvemos uma solução para automatizar esse serviço
+
+1. basicamente os requisitos funcionais são
+    - Cadastro de produto (CRUD PRODUTO)
+    - Cadastro de fornecedor (CRUD FORNECEDOR)
+    - Criar relação Produto x Fornecedor (Formulario de Cadastro, Pagina para listar)
