@@ -1,10 +1,10 @@
 <form (ngSubmit)="submit()" [formGroup]="productForm" #formDir="ngForm">
     <div class="form-group">
-        <label for="name">Nome:</label>
-        <input type="text" placeholder="Digite aqui um nome" formControlName="name" required>
+        <label for="name" class="form-label">Nome:</label>
+        <input type="text" clas="form-text" placeholder="Digite aqui um nome" formControlName="name" required>
 
         <div *ngIf="name.invalid && formDir.submitted" class="validation-error">
-            <p *ngIf="name.errors?.['required']">O nome é obrigatorio</p>
+            <p *ngIf="name.errors?.['required']">{{errorMessage}}</p>
         </div>
     </div>
 
@@ -13,7 +13,7 @@
         <input type="text" placeholder="Digite aqui uma descrição" formControlName="description" required>
 
         <div *ngIf="description.invalid && formDir.submitted" class="validation-error">
-            <p *ngIf="description.errors?.['required']">A descrição é obrigatorio</p>
+            <p *ngIf="description.errors?.['required']">{{errorMessage}}</p>
         </div>
     </div>
 
@@ -22,7 +22,7 @@
         <input type="text" placeholder="Digite o preço" formControlName="price" required>
 
         <div *ngIf="price?.invalid && formDir.submitted" class="validation-error">
-            <p *ngIf="price?.errors?.['required']">O valor do preço é obrigatorio</p>
+            <p *ngIf="price?.errors?.['required']">{{errorMessage}}</p>
         </div>
     </div>
 
@@ -31,7 +31,7 @@
         <input type="number" placeholder="Digite valor da quantidade" formControlName="quantity" required>
 
         <div *ngIf="quantity?.invalid && formDir.submitted" class="validation-error">
-            <p *ngIf="quantity?.errors?.['required']">Campo quantidade é obrigatorio</p>
+            <p *ngIf="quantity?.errors?.['required']">{{errorMessage}}</p>
         </div>
     </div>
 
@@ -40,7 +40,7 @@
         <input type="text" placeholder="Digite a Unidade de medida" formControlName="um" required>
 
         <div *ngIf="um?.invalid && formDir.submitted" class="validation-error">
-            <p *ngIf="um?.errors?.['required']">A Unidade de medida é obrigatorio</p>
+            <p *ngIf="um?.errors?.['required']">{{errorMessage}}</p>
         </div>
     </div>
 

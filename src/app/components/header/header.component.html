@@ -1,17 +1,17 @@
-<nav>
-    <a routerLink="/" class="brand">
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+    <a routerLink="/" class="brand d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <img src="/assets/supply-logo.png">
         <h2>Supply Chain</h2>
     </a>
-    <ul class="links">
-        <li>
-            <a routerLink="/">Home</a>
+    <ul class="links nav nav-pills">
+        <li class="nav-item">
+            <a routerLink="/" id="home" class="nav-link active">Home</a>
         </li>
-        <li id="add">
-            <a routerLink="/products">Cadastrar Produto</a>
+        <li id="add" class="nav-item">
+            <a routerLink="/products" id="novoProduto" class="nav-link">Cadastrar Produto</a>
         </li>
-        <!-- <li>
-            <a routerLink="/providers">Cadastrar Fornecedor</a>
+        <!-- <li class="nav-item">
+            <a routerLink="/providers" id="novoFornecedor">Cadastrar Fornecedor</a>
         </li> -->
     </ul>
-</nav>
+</header>
