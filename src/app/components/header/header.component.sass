@@ -1,0 +1,37 @@
+$primary-color: #2971de
+$color-gray: #777
+
+nav 
+    display: flex
+    justify-content: space-between
+    padding: 1em
+    border-bottom: 1px solid $color-gray
+
+.brand, .links 
+    display: flex
+    justify-content: center
+    align-items: center
+
+.brand 
+    img 
+        width: 40px
+        margin-right: 0.6em
+        &:hover
+            color: $primary-color
+
+.links 
+    li
+        margin-right: 1em
+        list-style: none
+
+.links 
+    a 
+        padding: 0.1em 0.3em
+
+#add 
+    a 
+        color: $primary-color
+#add
+    a
+        &:hover
+            background-color: #efefef
