@@ -9,12 +9,14 @@ import { ProviderFormComponent } from './components/provider-form/provider-form.
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    ProviderFormComponent,
+    ProviderFormComponent    
   ],
   imports: [
     BrowserModule,

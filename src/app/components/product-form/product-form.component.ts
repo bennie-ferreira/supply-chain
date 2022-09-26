@@ -11,6 +11,8 @@ export class ProductFormComponent implements OnInit {
   @Output() onSubmit = new EventEmitter<Product>()
   @Input() btnText!: string
   productForm!: FormGroup
+  
+  errorMessage: string = 'O preenchimento deste campo é obrigatório.'
 
   constructor() { }
 
@@ -24,6 +26,8 @@ export class ProductFormComponent implements OnInit {
       quantity: new FormControl('', [Validators.required]),
     })
   }
+
+  
 
   get name() {
     return this.productForm.get('name')!;

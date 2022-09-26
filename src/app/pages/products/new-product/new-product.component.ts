@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./new-product.component.sass']
 })
 export class NewProductComponent implements OnInit {
-  btnText = "Cadastrar!"
+  btnText = "Cadastrar"
 
   constructor(private productService: ProductService, private router: Router) { }
 
