@@ -18,7 +18,7 @@ export class NewProductComponent implements OnInit {
 
   async createHandler (product: Product){
     await this.productService.createProduct(product).subscribe();
-    alert("Momento adicionado com sucesso!")
+    alert("Produto adicionado com sucesso!")
     this.router.navigate(['/'])
   }
 

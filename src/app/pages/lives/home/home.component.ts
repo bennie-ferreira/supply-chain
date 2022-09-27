@@ -14,43 +14,23 @@ export class HomeComponent implements OnInit, OnDestroy {
   rows: any[] = []
   columns: string[] = []
 
-  rows2: any[] = []
-  columns2: string[] = []
-  subscription2: Subscription
-
   constructor(private providerService: ProviderService, private productService: ProductService) { 
     this.subscription = new Subscription()
-    this.subscription2 = new Subscription()
   }
 
   ngOnInit(): void {
     this.subscription = this.providerService.getProductsProviders().subscribe((items) => {
       const { data } = items
-      data.map((item) => {
-        item.total = (item.price * item.quantity)
-      })
+      const _columns = Object.keys(data[0])
 
       this.rows = data
-      this.columns = Object.keys(data[0])
-    })
+      this.columns = _columns
 
-    this.subscription2 = this.productService.getProducts().subscribe((items) => {
-      const { data } = items
-
-      data.map((item) => {
-        item.createdAt = new Date(item.createdAt).toLocaleDateString('pt-br')
-        item.updatedAt = new Date(item.updatedAt).toLocaleDateString('pt-br')
-        item.total = (item.price * item.quantity)
-      })
-
-      this.rows2 = data
-      this.columns2 = Object.keys(data[0])
     })
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe()
-    this.subscription2.unsubscribe()
   }
 
 }

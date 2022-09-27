@@ -19,7 +19,7 @@
 
     <div class="form-group">
         <label for="price">Preço:</label>
-        <input type="text" placeholder="Digite o preço" formControlName="price" required>
+        <input type="number" placeholder="Digite o preço" formControlName="price" required>
 
         <div *ngIf="price?.invalid && formDir.submitted" class="validation-error">
             <p *ngIf="price?.errors?.['required']">{{errorMessage}}</p>

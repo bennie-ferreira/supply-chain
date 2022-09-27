@@ -3,76 +3,13 @@
     <div>
         <table class="table table-light table-striped">
             <thead>
-                <th>
-                    <tr>Codigo</tr>
-                </th>
-                <th>
-                    <tr>Nome</tr>
-                </th>
-                <th>
-                    <tr>Nome Fantasia</tr>
-                </th>
-                <th>
-                    <tr>Produto</tr>
-                </th>
-                <th>
-                    <tr>Preço</tr>
-                </th>
-                <th>
-                    <tr>Unidade Medida</tr>
-                </th>
-                <th>
-                    <tr>Quantidade</tr>
-                </th>
-                <th>
-                    <tr>Total</tr>
+                <th *ngFor="let column of columns; index as i">
+                    <tr>{{ columns[i] | uppercase }}</tr>
                 </th>
             </thead>
             <tbody>
                 <tr *ngFor="let row of rows">
                     <td *ngFor="let column of columns">{{ row[column] }}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<div class="home-container">
-    <h1>Produtos</h1>
-    <div>
-        <table class="table table-light table-striped">
-            <thead>
-                <th>
-                    <tr>Codigo</tr>
-                </th>
-                <th>
-                    <tr>Nome</tr>
-                </th>
-                <th>
-                    <tr>Descrição</tr>
-                </th>
-                <th>
-                    <tr>Preço</tr>
-                </th>
-                <th>
-                    <tr>Unidade de medida</tr>
-                </th>
-                <th>
-                    <tr>Quantidade</tr>
-                </th>
-                <th>
-                    <tr>Criado em</tr>
-                </th>
-                <th>
-                    <tr>Atualizado em</tr>
-                </th>
-                <th>
-                    <tr>Total</tr>
-                </th>
-            </thead>
-            <tbody>
-                <tr *ngFor="let row2 of rows2">
-                    <td *ngFor="let column2 of columns2">{{ row2[column2] }}</td>
                 </tr>
             </tbody>
         </table>
