@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProviderService } from '../../../services/provider.service'
-import { Subscription } from 'rxjs';
-import { ProductService } from 'src/app/services/product.service';
+import { map, Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { IProductsProvidersState, listProductsProvidersAction } from 'src/app/store/home.state';
 
 @Component({
   selector: 'app-home',
@@ -14,19 +15,33 @@ export class HomeComponent implements OnInit, OnDestroy {
   rows: any[] = []
   columns: string[] = []
 
-  constructor(private providerService: ProviderService, private productService: ProductService) { 
+  constructor(
+    private providerService: ProviderService, 
+    private store: Store<{ homeInitialState: IProductsProvidersState }>
+  ) { 
     this.subscription = new Subscription()
   }
 
+  columns$ = this.store.select('homeInitialState').pipe(
+    map(e => e.columns)
+  )
+
+  rows$ = this.store.select('homeInitialState').pipe(
+    map(e => e.rows)
+  )
+
   ngOnInit(): void {
-    this.subscription = this.providerService.getProductsProviders().subscribe((items) => {
-      const { data } = items
-      const _columns = Object.keys(data[0])
-
-      this.rows = data
-      this.columns = _columns
-
+    this.subscription = this.providerService.getProductsProviders()
+    .subscribe({
+      next: (items) => {
+        const { data } = items
+        this.listProductsProviders(data)
+      } 
     })
+  }
+
+  listProductsProviders(data: any){
+    this.store.dispatch(listProductsProvidersAction(data))
   }
 
   ngOnDestroy(): void {

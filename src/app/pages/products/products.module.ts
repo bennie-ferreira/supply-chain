@@ -5,6 +5,8 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { NewProductComponent } from './new-product/new-product.component';
 import { ProductFormComponent } from 'src/app/components/product-form/product-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { productReduce } from 'src/app/store/product.state';
 
 
 @NgModule({
@@ -16,7 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     ProductsRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({ product: productReduce })
   ]
 })
 export class ProductsModule { }
