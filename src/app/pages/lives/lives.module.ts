@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { LivesRoutingModule } from './lives-routing.module';
 import { HomeComponent } from './home/home.component';
-
+import { StoreModule } from '@ngrx/store';
+import { listProductsProvidersReduce } from 'src/app/store/home.state';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     CommonModule,
-    LivesRoutingModule
+    LivesRoutingModule,
+    StoreModule.forRoot({ homeInitialState: listProductsProvidersReduce })
   ]
 })
 export class LivesModule { }

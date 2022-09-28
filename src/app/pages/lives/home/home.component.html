@@ -3,13 +3,13 @@
     <div>
         <table class="table table-light table-striped">
             <thead>
-                <th *ngFor="let column of columns; index as i">
-                    <tr>{{ columns[i] | uppercase }}</tr>
+                <th *ngFor="let column of columns$ | async">
+                    <tr>{{ column | uppercase }}</tr>
                 </th>
             </thead>
             <tbody>
-                <tr *ngFor="let row of rows">
-                    <td *ngFor="let column of columns">{{ row[column] }}</td>
+                <tr *ngFor="let row of rows$ | async">
+                    <td *ngFor="let column of columns$ | async">{{ row[column] }}</td>
                 </tr>
             </tbody>
         </table>
