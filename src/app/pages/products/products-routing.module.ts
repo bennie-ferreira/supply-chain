@@ -3,7 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { NewProductComponent } from './new-product/new-product.component';
 
 
-const routes: Routes = [{ path: '', component: NewProductComponent }];
+const routes: Routes = [
+  { path: '', component: NewProductComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
