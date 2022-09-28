@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -14,7 +15,9 @@ import { ProviderFormComponent } from 'src/app/components/provider-form/provider
   ],
   imports: [
     CommonModule,
-    ProvidersRoutingModule
+    ProvidersRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
     
   ]
 })

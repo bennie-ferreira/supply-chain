@@ -1,4 +1,42 @@
-<form >
+<form (ngSubmit)="submit()" [formGroup]="providerForm" #formDir="ngForm">
     <h2>Cadastro de novo <span>Fornecedor</span></h2>
+
+    <div class="form-group">
+        <label for="name" class="form-label">Razão Social:</label>
+        <input type="text" clas="form-text" placeholder="Digite aqui a razão social" formControlName="name_company" required>
+
+        <div *ngIf="nameCompany?.invalid && formDir.submitted" class="validation-error">
+            <small *ngIf="nameCompany?.errors?.['required']">{{errorMessage}}</small>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name" class="form-label">Nome Fantasia:</label>
+        <input type="text" clas="form-text" placeholder="Digite aqui o nome fantasia" formControlName="name" required>
+
+        <div *ngIf="name?.invalid && formDir.submitted" class="validation-error">
+            <small *ngIf="name?.errors?.['required']">{{errorMessage}}</small>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name" class="form-label">CNPJ:</label>
+        <input type="text" clas="form-text" placeholder="Digite aqui o CNPJ" formControlName="cnpj" required>
+
+        <div *ngIf="cnpj?.invalid && formDir.submitted" class="validation-error">
+            <small *ngIf="cnpj?.errors?.['required']">{{errorMessage}}</small>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name" class="form-label">Contato:</label>
+        <input type="text" clas="form-text" placeholder="Digite aqui o telefone de contato" formControlName="contact" required>
+
+        <div *ngIf="contact?.invalid && formDir.submitted" class="validation-error">
+            <small *ngIf="contact?.errors?.['required']">{{errorMessage}}</small>
+        </div>
+    </div>
+
+    <input type="submit" value="{{ btnText }}">
     
 </form>

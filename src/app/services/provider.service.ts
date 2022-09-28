@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Response } from '../interfaces/Response';
 import { IProductsProviders } from '../interfaces/ProductsProviders'
+import { IProviders } from '../interfaces/Providers';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +16,9 @@ export class ProviderService {
 
   getProductsProviders(): Observable<Response<IProductsProviders[]>>{
     return this.http.get<Response<IProductsProviders[]>>(`${this.baseApiUrl}providers/product`)
+  }
+
+  createProvider(provider: IProviders): Observable<IProviders>{
+    return this.http.post<IProviders>(`${this.baseApiUrl}provider`, provider)
   }
 }
