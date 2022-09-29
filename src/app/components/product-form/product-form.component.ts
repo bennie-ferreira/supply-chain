@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
-import { Product } from 'src/app/interfaces/Product';
+import { IProduct } from 'src/app/interfaces/Product';
 
 @Component({
   selector: 'app-product-form',
@@ -8,7 +8,7 @@ import { Product } from 'src/app/interfaces/Product';
   styleUrls: ['./product-form.component.sass']
 })
 export class ProductFormComponent implements OnInit {
-  @Output() onSubmit = new EventEmitter<Product>()
+  @Output() onSubmit = new EventEmitter<IProduct>()
   @Input() btnText!: string
   productForm!: FormGroup
   
@@ -52,6 +52,7 @@ export class ProductFormComponent implements OnInit {
   submit(){
     if(this.productForm.invalid) return
     this.onSubmit.emit(this.productForm.value)
+    this.productForm.reset()
   }
 
 }

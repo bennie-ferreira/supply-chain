@@ -43,9 +43,9 @@ export class ListProductsComponent implements OnInit {
     this.store.dispatch(listProductsAction(data))
   }
 
-  deleteProduct(index: number){
-    this.store.dispatch(removeProductAction(index))
-    this.productService.deleteProduct(index)
+  deleteProduct(id: number){
+    this.store.dispatch(removeProductAction(id))
+    this.productService.deleteProduct(id)
     .subscribe(() => {
       alert('Produto excluido com sucesso!')
     })

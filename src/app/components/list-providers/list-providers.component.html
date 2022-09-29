@@ -1,0 +1,19 @@
+<table class="table table-light table-striped">
+    <thead>
+        <th *ngFor="let column of columns">
+            <tr>{{ column | uppercase }}</tr>
+        </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of rows$ | async">
+            <td>{{ row.id }}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.name_company }}</td>
+            <td>{{ row.contact }}</td>
+            <td>{{ row.cnpj }}</td>
+            <td>
+                <span class="btn btn-danger" (click)="deleteProvider(row.id)">Excluir</span>
+            </td>
+        </tr>
+    </tbody>
+</table>

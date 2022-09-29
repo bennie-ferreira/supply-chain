@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
-import { Product } from 'src/app/interfaces/Product';
+import { IProduct } from 'src/app/interfaces/Product';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class NewProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async createHandler (product: Product){
+  async createHandler (product: IProduct){
     await this.productService.createProduct(product).subscribe((data) => {
       this.productService.emitterProductCreated.emit(data)
     });

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { IProviders } from 'src/app/interfaces/Providers';
+import { IProvider } from 'src/app/interfaces/Providers';
 
 @Component({
   selector: 'app-provider-form',
@@ -8,7 +8,7 @@ import { IProviders } from 'src/app/interfaces/Providers';
   styleUrls: ['./provider-form.component.sass']
 })
 export class ProviderFormComponent implements OnInit {
-  @Output() onSubmit = new EventEmitter<IProviders>()
+  @Output() onSubmit = new EventEmitter<IProvider>()
   @Input() btnText!: string
   providerForm!: FormGroup
   
@@ -45,5 +45,6 @@ export class ProviderFormComponent implements OnInit {
   submit(){
     if(this.providerForm.invalid) return
     this.onSubmit.emit(this.providerForm.value)
+    this.providerForm.reset()
   }
 }

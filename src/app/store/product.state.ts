@@ -1,5 +1,5 @@
 import { createAction, createReducer, on } from "@ngrx/store";
-import { Product } from "../interfaces/Product";
+import { IProduct } from "../interfaces/Product";
 
 export interface IProductState {
     listProduct: any
@@ -11,7 +11,7 @@ export const productInitialState: IProductState = {
 
 export const listProductsAction = createAction('[Product] Lista todo os produtos', (payload: any) => ({ payload }))
 export const addProductAction = createAction('[Product] Adicionar produto da lista', (payload: any) => ({ payload }))
-export const removeProductAction = createAction('[Produto] Remove produto da lista', (payload: any) => ({ payload }))
+export const removeProductAction = createAction('[Product] Remove produto da lista', (payload: any) => ({ payload }))
 
 export const productReduce = createReducer(
     productInitialState,
@@ -32,7 +32,7 @@ export const productReduce = createReducer(
     on(removeProductAction, (state, payload) => {
         state = {
             ...state,
-            listProduct: state.listProduct.filter((i: Product) => i.id !== payload.payload)
+            listProduct: state.listProduct.filter((i: IProduct) => i.id !== payload.payload)
         }
         return state
     })

@@ -1,4 +1,4 @@
-import { IProviders } from 'src/app/interfaces/Providers';
+import { IProvider } from 'src/app/interfaces/Providers';
 import { Router } from '@angular/router';
 import { ProviderService } from './../../../services/provider.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,10 +16,11 @@ export class NewProviderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  async createHandler(provider: IProviders){
-    await this.providerService.createProvider(provider).subscribe()
+  async createHandler(provider: IProvider){
+    await this.providerService.createProvider(provider).subscribe((data) => {
+      this.providerService.emitterProviderCreated.emit(data)
+    });
     alert("Fornecedor criado com sucesso.")
-    this.router.navigate(['/'])
 
   }
 
