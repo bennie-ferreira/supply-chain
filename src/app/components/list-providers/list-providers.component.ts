@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { map, Subscription } from 'rxjs';
+import { map, Subject, Subscription, takeUntil, tap } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { ProviderService } from 'src/app/services/provider.service';
 import { IProviderState, listProvidersAction, addProviderAction, removeProviderAction } from 'src/app/store/provider.state';
@@ -11,15 +11,14 @@ import { IProviderState, listProvidersAction, addProviderAction, removeProviderA
 })
 export class ListProvidersComponent implements OnInit {
   subscription: Subscription;
-  subscription2: Subscription;
+  unsub$ = new Subject()
   columns: string[] = ['Código', 'Razão Social', 'Nome Fantasia', 'CNPJ', 'Contato', 'Ações']
 
   constructor(
     private providerService: ProviderService,
     private store: Store<{ providerInitialState: IProviderState }>
   ) { 
-    this.subscription = new Subscription(),
-    this.subscription2 = new Subscription()
+    this.subscription = new Subscription()
   }
 
   rows$ = this.store.select('providerInitialState').pipe(
@@ -27,11 +26,15 @@ export class ListProvidersComponent implements OnInit {
   )
 
   ngOnInit(): void {
-    this.subscription2 = this.providerService.emitterProviderCreated.subscribe((provider) => {
+    this.subscription = this.providerService.emitterProviderCreated.subscribe((provider) => {
       this.store.dispatch(addProviderAction(provider.data))
     })
 
     this.subscription = this.providerService.getProviders()
+    .pipe(
+      takeUntil(this.unsub$)
+      // tap(v => console.log(v))
+    )
     .subscribe({
       next: (items) => {
         const { data } = items
@@ -53,8 +56,9 @@ export class ListProvidersComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
+    this.unsub$.next(true);
+    this.unsub$.complete();
     this.subscription.unsubscribe()
-    this.subscription2.unsubscribe()
   }
 
 }
