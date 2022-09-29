@@ -1,4 +1,4 @@
-import { createAction, createReducer, on, State } from "@ngrx/store";
+import { createAction, createReducer, on } from "@ngrx/store";
 
 export interface IProductsProvidersState { 
     columns: string[],

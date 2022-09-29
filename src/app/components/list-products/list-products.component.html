@@ -1,0 +1,20 @@
+<table class="table table-light table-striped">
+    <thead>
+        <th *ngFor="let column of columns">
+            <tr>{{ column | uppercase }}</tr>
+        </th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let row of rows$ | async">
+            <td>{{ row.id }}</td>
+            <td>{{ row.name }}</td>
+            <td>{{ row.description }}</td>
+            <td>{{ row.price }}</td>
+            <td>{{ row.um }}</td>
+            <td>{{ row.quantity }}</td>
+            <td>
+                <span class="btn btn-danger" (click)="deleteProduct(row.id)">Excluir</span>
+            </td>
+        </tr>
+    </tbody>
+</table>

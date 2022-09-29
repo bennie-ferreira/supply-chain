@@ -7,19 +7,21 @@ import { ProductFormComponent } from 'src/app/components/product-form/product-fo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { productReduce } from 'src/app/store/product.state';
+import { ListProductsComponent } from 'src/app/components/list-products/list-products.component';
 
 
 @NgModule({
   declarations: [
     NewProductComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ListProductsComponent
   ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({ product: productReduce })
+    StoreModule.forRoot({ productInitialState: productReduce })
   ]
 })
 export class ProductsModule { }

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { Product } from 'src/app/interfaces/Product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -11,15 +10,16 @@ import { ProductService } from 'src/app/services/product.service';
 export class NewProductComponent implements OnInit {
   btnText = "Cadastrar"
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
   }
 
   async createHandler (product: Product){
-    await this.productService.createProduct(product).subscribe();
+    await this.productService.createProduct(product).subscribe((data) => {
+      this.productService.emitterProductCreated.emit(data)
+    });
     alert("Produto adicionado com sucesso!")
-    this.router.navigate(['/'])
   }
 
 }

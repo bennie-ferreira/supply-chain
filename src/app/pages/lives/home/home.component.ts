@@ -12,8 +12,6 @@ import { IProductsProvidersState, listProductsProvidersAction } from 'src/app/st
 
 export class HomeComponent implements OnInit, OnDestroy {
   subscription: Subscription;
-  rows: any[] = []
-  columns: string[] = []
 
   constructor(
     private providerService: ProviderService, 
@@ -23,11 +21,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   columns$ = this.store.select('homeInitialState').pipe(
-    map(e => e.columns)
+    map(i => i.columns)
   )
 
   rows$ = this.store.select('homeInitialState').pipe(
-    map(e => e.rows)
+    map(i => i.rows)
   )
 
   ngOnInit(): void {
