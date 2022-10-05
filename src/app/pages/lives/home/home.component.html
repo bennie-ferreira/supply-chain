@@ -4,11 +4,13 @@
         <table class="table table-light table-striped">
             <thead>
                 <th *ngFor="let column of columns$ | async">
-                    <tr>{{ column | uppercase }}</tr>
+                    <tr class="cabecalho-tabela" (click)="sort(column)">{{ column | uppercase }}
+                        <span *ngIf="key == column">{{reverse ? '▲' : '▼'}}</span>
+                    </tr>
                 </th>
             </thead>
             <tbody>
-                <tr *ngFor="let row of rows$ | async">
+                <tr *ngFor="let row of rows$ | async | orderBy: key : reverse; let i = index">
                     <td *ngFor="let column of columns$ | async">{{ row[column] }}</td>
                 </tr>
             </tbody>

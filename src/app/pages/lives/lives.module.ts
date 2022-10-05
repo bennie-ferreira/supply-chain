@@ -1,3 +1,4 @@
+import { OrderModule } from 'ngx-order-pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -7,6 +8,8 @@ import { StoreModule } from '@ngrx/store';
 import { listProductsProvidersReduce } from 'src/app/store/home.state';
 
 
+
+
 @NgModule({
   declarations: [
     HomeComponent
@@ -14,7 +17,9 @@ import { listProductsProvidersReduce } from 'src/app/store/home.state';
   imports: [
     CommonModule,
     LivesRoutingModule,
-    StoreModule.forRoot({ homeInitialState: listProductsProvidersReduce })
+    StoreModule.forRoot({ homeInitialState: listProductsProvidersReduce }),
+    OrderModule
+    
   ]
 })
 export class LivesModule { }

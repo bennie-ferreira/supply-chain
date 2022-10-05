@@ -1,3 +1,5 @@
+@import "src/styles.sass"
+
 .home-container 
     display: flex
     align-items: center
@@ -12,7 +14,20 @@
 table
     border: 1px solid #777
     padding: .6em
+    thead 
+        background-color: $table-head-color
     th
         padding: .6em
+        background-color: $table-head-color
     td
         padding: .6em
+
+
+.cabecalho-tabela
+    background-color: $table-head-color !important
+    color: #fff
+    cursor: pointer
+    span
+        color: #fff
+
+

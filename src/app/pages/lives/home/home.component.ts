@@ -20,6 +20,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.subscription = new Subscription()
   }
 
+      // Configuração da ordenação
+      key: string = 'produto'; // Define um valor padrão, para quando inicializar o componente
+      reverse: boolean = false;
+      sort(key: string) {
+          this.key = key;
+          this.reverse = !this.reverse;
+      }
+
   columns$ = this.store.select('homeInitialState').pipe(
     map(i => i.columns)
   )
